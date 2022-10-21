@@ -18,12 +18,14 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-        let authViewController = AuthViewController()
-        let authCoordinator = AuthCoordinator()
+        
+        let navigationController = UINavigationController()
+        
+        let authCoordinator = WelcomeCoordinator(navigationController: navigationController)
         childCoordinators.append(authCoordinator)
         authCoordinator.start()
         
-        window.rootViewController = authViewController
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
 }

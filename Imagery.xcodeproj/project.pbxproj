@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		899B6D1D2902B441008DCB6F /* UIImageView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899B6D1C2902B441008DCB6F /* UIImageView + Extensions.swift */; };
+		899B6D1F2902B5D6008DCB6F /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899B6D1E2902B5D6008DCB6F /* UILabel + Extensions.swift */; };
+		899B6D222902B5F2008DCB6F /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899B6D212902B5F2008DCB6F /* UIFont + Extensions.swift */; };
+		899B6D242902B60D008DCB6F /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899B6D232902B60D008DCB6F /* UIColor + Extensions.swift */; };
+		899B6D262902B6C9008DCB6F /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899B6D252902B6C9008DCB6F /* UIButton + Extensions.swift */; };
+		899B6D282902B746008DCB6F /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899B6D272902B746008DCB6F /* UIStackView + Extensions.swift */; };
 		89C7A4D62902ACE500D4C87E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7A4D52902ACE500D4C87E /* AppDelegate.swift */; };
-		89C7A4DA2902ACE500D4C87E /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7A4D92902ACE500D4C87E /* AuthViewController.swift */; };
+		89C7A4DA2902ACE500D4C87E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7A4D92902ACE500D4C87E /* WelcomeViewController.swift */; };
 		89C7A4DF2902ACE600D4C87E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89C7A4DE2902ACE600D4C87E /* Assets.xcassets */; };
 		89C7A4E22902ACE600D4C87E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89C7A4E02902ACE600D4C87E /* LaunchScreen.storyboard */; };
 		89C7A4ED2902ACE600D4C87E /* ImageryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7A4EC2902ACE600D4C87E /* ImageryTests.swift */; };
@@ -16,8 +22,8 @@
 		89C7A4F92902ACE600D4C87E /* ImageryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7A4F82902ACE600D4C87E /* ImageryUITestsLaunchTests.swift */; };
 		89C7A50A2902ADC600D4C87E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7A5092902ADC600D4C87E /* Coordinator.swift */; };
 		89C7A50C2902ADEA00D4C87E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7A50B2902ADEA00D4C87E /* AppCoordinator.swift */; };
-		89C7A50E2902AE0600D4C87E /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7A50D2902AE0600D4C87E /* AuthCoordinator.swift */; };
-		89C7A5112902AE2F00D4C87E /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7A5102902AE2F00D4C87E /* AuthViewModel.swift */; };
+		89C7A50E2902AE0600D4C87E /* WelcomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7A50D2902AE0600D4C87E /* WelcomeCoordinator.swift */; };
+		89C7A5112902AE2F00D4C87E /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C7A5102902AE2F00D4C87E /* WelcomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,9 +44,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		899B6D1C2902B441008DCB6F /* UIImageView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extensions.swift"; sourceTree = "<group>"; };
+		899B6D1E2902B5D6008DCB6F /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
+		899B6D212902B5F2008DCB6F /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
+		899B6D232902B60D008DCB6F /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
+		899B6D252902B6C9008DCB6F /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
+		899B6D272902B746008DCB6F /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
 		89C7A4D22902ACE500D4C87E /* Imagery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Imagery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C7A4D52902ACE500D4C87E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		89C7A4D92902ACE500D4C87E /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		89C7A4D92902ACE500D4C87E /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		89C7A4DE2902ACE600D4C87E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89C7A4E12902ACE600D4C87E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C7A4E32902ACE600D4C87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,8 +63,8 @@
 		89C7A4F82902ACE600D4C87E /* ImageryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageryUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		89C7A5092902ADC600D4C87E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		89C7A50B2902ADEA00D4C87E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		89C7A50D2902AE0600D4C87E /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
-		89C7A5102902AE2F00D4C87E /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		89C7A50D2902AE0600D4C87E /* WelcomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCoordinator.swift; sourceTree = "<group>"; };
+		89C7A5102902AE2F00D4C87E /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +92,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		899973F22902C9DD008C5814 /* NetworkServices */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetworkServices;
+			sourceTree = "<group>";
+		};
+		899B6D1B2902B429008DCB6F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				899B6D202902B5DD008DCB6F /* UIKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		899B6D202902B5DD008DCB6F /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				899B6D1E2902B5D6008DCB6F /* UILabel + Extensions.swift */,
+				899B6D1C2902B441008DCB6F /* UIImageView + Extensions.swift */,
+				899B6D212902B5F2008DCB6F /* UIFont + Extensions.swift */,
+				899B6D232902B60D008DCB6F /* UIColor + Extensions.swift */,
+				899B6D252902B6C9008DCB6F /* UIButton + Extensions.swift */,
+				899B6D272902B746008DCB6F /* UIStackView + Extensions.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
 		89C7A4C92902ACE500D4C87E = {
 			isa = PBXGroup;
 			children = (
@@ -106,7 +146,9 @@
 				89C7A5062902AD5B00D4C87E /* ViewControllers */,
 				89C7A5072902AD7A00D4C87E /* Coordinators */,
 				89C7A50F2902AE2200D4C87E /* ViewModels */,
+				899973F22902C9DD008C5814 /* NetworkServices */,
 				89C7A5082902AD8600D4C87E /* Protocols */,
+				899B6D1B2902B429008DCB6F /* Extensions */,
 				89C7A5052902AD0A00D4C87E /* Resources */,
 			);
 			path = Imagery;
@@ -143,7 +185,7 @@
 		89C7A5062902AD5B00D4C87E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				89C7A4D92902ACE500D4C87E /* AuthViewController.swift */,
+				89C7A4D92902ACE500D4C87E /* WelcomeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -152,7 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				89C7A50B2902ADEA00D4C87E /* AppCoordinator.swift */,
-				89C7A50D2902AE0600D4C87E /* AuthCoordinator.swift */,
+				89C7A50D2902AE0600D4C87E /* WelcomeCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -168,7 +210,7 @@
 		89C7A50F2902AE2200D4C87E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				89C7A5102902AE2F00D4C87E /* AuthViewModel.swift */,
+				89C7A5102902AE2F00D4C87E /* WelcomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -303,11 +345,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89C7A50E2902AE0600D4C87E /* AuthCoordinator.swift in Sources */,
+				899B6D262902B6C9008DCB6F /* UIButton + Extensions.swift in Sources */,
+				899B6D222902B5F2008DCB6F /* UIFont + Extensions.swift in Sources */,
+				899B6D242902B60D008DCB6F /* UIColor + Extensions.swift in Sources */,
+				89C7A50E2902AE0600D4C87E /* WelcomeCoordinator.swift in Sources */,
 				89C7A50C2902ADEA00D4C87E /* AppCoordinator.swift in Sources */,
-				89C7A5112902AE2F00D4C87E /* AuthViewModel.swift in Sources */,
-				89C7A4DA2902ACE500D4C87E /* AuthViewController.swift in Sources */,
+				89C7A5112902AE2F00D4C87E /* WelcomeViewModel.swift in Sources */,
+				89C7A4DA2902ACE500D4C87E /* WelcomeViewController.swift in Sources */,
+				899B6D282902B746008DCB6F /* UIStackView + Extensions.swift in Sources */,
+				899B6D1D2902B441008DCB6F /* UIImageView + Extensions.swift in Sources */,
 				89C7A4D62902ACE500D4C87E /* AppDelegate.swift in Sources */,
+				899B6D1F2902B5D6008DCB6F /* UILabel + Extensions.swift in Sources */,
 				89C7A50A2902ADC600D4C87E /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
