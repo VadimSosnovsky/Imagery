@@ -34,6 +34,13 @@ final class AuthCoordinator: Coordinator {
         signUpCoordinator.start()
     }
     
+    func startImageryScene() {
+        let imageryTabBarCoordinator = ImageryTabBarCoordinator(navigationController: navigationController)
+        imageryTabBarCoordinator.parentCoordinator = self
+        childCoordinators.append(imageryTabBarCoordinator)
+        imageryTabBarCoordinator.start()
+    }
+    
     func childDidFinish(_ childCoordinator: Coordinator) {
         if let index = childCoordinators.firstIndex(where: { coordinator -> Bool in
             return childCoordinator === coordinator

@@ -8,14 +8,10 @@
 import UIKit
 import FirebaseAuth
 
-protocol SignUpViewModelDelegate: AnyObject {
-    func showAlert()
-}
-
 final class SignUpViewModel {
     
     var coordinator: SignUpCoordinator?
-    weak var delegate: SignUpViewModelDelegate?
+    weak var delegate: AlertViewModelDelegate?
     
     func signUpButtonTapped(textFields: [UITextField]) {
         guard let email = textFields.first?.text else { return }

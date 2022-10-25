@@ -27,6 +27,7 @@ class AuthViewController: UIViewController {
     private var textFiledsStackView = UIStackView()
     private var buttonsStackView = UIStackView()
     
+    private var textFields = [UITextField]()
     var viewModel: AuthViewModel!
     
     override func viewDidLoad() {
@@ -34,6 +35,7 @@ class AuthViewController: UIViewController {
         
         view.backgroundColor = .white
         
+        viewModel.delegate = self
         setupViews()
         customizeElements()
         setupConstraints()
@@ -42,6 +44,15 @@ class AuthViewController: UIViewController {
         viewModel.onUpdate = { [weak self] in
             self?.loginLabel.text = "Registration complete"
         }
+        
+        textFields = [emailTextField, passwordTextField]
+    }
+}
+
+// MARK: - AuthViewModelDelegate
+extension AuthViewController: AlertViewModelDelegate {
+    func showAlert() {
+        errorAlertController(title: "Wrong login or password")
     }
 }
 
@@ -53,7 +64,7 @@ extension AuthViewController {
     }
     
     @objc private func signInButtonTapped() {
-        viewModel.signInButtonTapped()
+        viewModel.signInButtonTapped(textFields: textFields)
     }
     
     @objc private func signUpButtonTapped() {

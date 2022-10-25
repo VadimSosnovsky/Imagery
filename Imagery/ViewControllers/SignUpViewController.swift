@@ -54,7 +54,7 @@ class SignUpViewController: UIViewController {
 }
 
 // MARK: - SignUpViewModelDelegate
-extension SignUpViewController: SignUpViewModelDelegate {
+extension SignUpViewController: AlertViewModelDelegate {
     func showAlert() {
         errorAlertController(title: "The email address is already in use by another account")
     }
