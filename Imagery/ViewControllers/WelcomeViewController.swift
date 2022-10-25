@@ -9,7 +9,7 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
-    private let backgroundImageView = UIImageView(image: UIImage(named: "wallpaper"), contentMode: .scaleAspectFill)
+    private let backgroundImageView = UIImageView(image: UIImage(named: "welcomeWallpaper"), contentMode: .scaleAspectFill)
     private let welcomeLabel = UILabel(font: .helveticaNeueBold30(), textColor: .mainWhite())
     private let additionLabel = UILabel(font: .helveticaNeueLight24(), textColor: .mainWhite())
     private let loginButton = UIButton(title: "LOGIN OR REGISTER")

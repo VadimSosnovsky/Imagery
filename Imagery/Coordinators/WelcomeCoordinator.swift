@@ -24,5 +24,12 @@ final class WelcomeCoordinator: Coordinator {
         welcomeViewController.viewModel = welcomeViewModel
         navigationController.setViewControllers([welcomeViewController], animated: true)
     }
+    
+    func startAuthScene() {
+        let authCoordinator = AuthCoordinator(navigationController: navigationController)
+        authCoordinator.parentCoordinator = self
+        childCoordinators.append(authCoordinator)
+        authCoordinator.start()
+    }
 }
 
