@@ -29,14 +29,12 @@ final class ImageryTabBarCoordinator: Coordinator {
     private func prepareTabBarController(withTabControllers tabControllers: [UIViewController]) {
         tabBarController.setViewControllers(tabControllers, animated: true)
         tabBarController.selectedIndex = TabBarPage.search.pageOrderNumber()
-        navigationController.viewControllers = [tabBarController]
+        navigationController.setViewControllers([tabBarController], animated: true)
     }
     
     private func getTabController(_ page: TabBarPage) -> UINavigationController {
-        let navController = UINavigationController()
-        navController.setNavigationBarHidden(false, animated: false)
-
-        navController.tabBarItem = UITabBarItem.init(title: page.pageTitleValue(),
+        let navigationController = UINavigationController()
+        navigationController.tabBarItem = UITabBarItem.init(title: page.pageTitleValue(),
                                                      image: page.pageImageValue(),
                                                      tag: page.pageOrderNumber())
 
@@ -49,7 +47,7 @@ final class ImageryTabBarCoordinator: Coordinator {
                     self?.selectPage(.search)
                 }
             }
-            navController.pushViewController(searchVC, animated: true)
+            navigationController.pushViewController(searchVC, animated: true)
             
         case .favorite:
             let favoriteVC = FavoriteViewController()
@@ -59,10 +57,10 @@ final class ImageryTabBarCoordinator: Coordinator {
                     self?.selectPage(.favorite)
                 }
             }
-            navController.pushViewController(favoriteVC, animated: true)
+            navigationController.pushViewController(favoriteVC, animated: true)
         }
         
-        return navController
+        return navigationController
     }
     
     func selectPage(_ page: TabBarPage) {

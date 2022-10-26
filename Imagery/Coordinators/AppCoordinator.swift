@@ -20,7 +20,7 @@ final class AppCoordinator: Coordinator {
     func start() {
         
         let navigationController = UINavigationController()
-        
+        navigationController.setNavigationBarHidden(true, animated: true)
         let authCoordinator = WelcomeCoordinator(navigationController: navigationController)
         childCoordinators.append(authCoordinator)
         authCoordinator.start()

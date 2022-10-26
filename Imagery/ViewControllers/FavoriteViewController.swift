@@ -10,7 +10,7 @@ import UIKit
 class FavoriteViewController: UIViewController {
     
     var didSendEventClosure: ((FavoriteViewController.Event) -> Void)?
-    var viewModel: SearchViewModel!
+    var viewModel: FavoriteViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

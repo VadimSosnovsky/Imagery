@@ -11,7 +11,7 @@ import FirebaseAuth
 final class AuthViewModel {
     
     weak var delegate: AlertViewModelDelegate?
-    var authServise = AuthService.shared
+    var authService = AuthService.shared
     var coordinator: AuthCoordinator?
     var onUpdate = {}
     
@@ -36,14 +36,7 @@ final class AuthViewModel {
         guard let email = textFields.first?.text else { return }
         guard let password = textFields.last?.text else { return }
         
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] (_, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                self?.delegate?.showAlert()
-            } else {
-                self?.coordinator?.startImageryScene()
-            }
-        }
+        authService.signIn(withEmail: email, password: password, authViewModel: self)
     }
     
     func signUpButtonTapped() {
