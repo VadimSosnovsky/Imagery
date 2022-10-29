@@ -11,16 +11,18 @@ import SnapKit
 class CollectionViewCell: UICollectionViewCell {
     
     static let reuseId = "CollectionViewCell"
-    var networkService = NetworkService.shared
     
-    private let imageView = UIImageView(image: nil, contentMode: .scaleAspectFit)
+    private let imageView = UIImageView(image: nil, contentMode: .scaleAspectFill)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setupViews()
-        customizeElements()
         setupConstraints()
+    }
+    
+    override func layoutSubviews() {
+        imageView.layer.cornerRadius = 6
     }
     
     override func prepareForReuse() {
@@ -35,22 +37,15 @@ class CollectionViewCell: UICollectionViewCell {
 
 // MARK: - Configure Cell
 extension CollectionViewCell {
-    func configure(with url: URL) {
-        networkService.loadImages(from: url) { [weak self] image in
-            self?.imageView.image = image
-        }
+    func configure(with image: UIImage) {
+        self.imageView.image = image
     }
 }
 
 // MARK: - Setup Views
 extension CollectionViewCell {
-    
     private func setupViews() {
         addSubview(imageView)
-    }
-    
-    func customizeElements() {
-        imageView.translatesAutoresizingMaskIntoConstraints = false
     }
 }
 

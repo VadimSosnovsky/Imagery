@@ -28,6 +28,7 @@ final class ImageryTabBarCoordinator: Coordinator {
     
     private func prepareTabBarController(withTabControllers tabControllers: [UIViewController]) {
         tabBarController.setViewControllers(tabControllers, animated: true)
+        tabBarController.tabBar.tintColor = .mainDark()
         tabBarController.selectedIndex = TabBarPage.search.pageOrderNumber()
         navigationController.setViewControllers([tabBarController], animated: true)
     }
@@ -41,6 +42,8 @@ final class ImageryTabBarCoordinator: Coordinator {
         switch page {
         case .search:
             let searchVC = SearchViewController()
+            let searchViewModel = SearchViewModel()
+            searchVC.viewModel = searchViewModel
             searchVC.didSendEventClosure = { [weak self] event in
                 switch event {
                 case .search:
@@ -51,6 +54,8 @@ final class ImageryTabBarCoordinator: Coordinator {
             
         case .favorite:
             let favoriteVC = FavoriteViewController()
+            let favoriteViewModel = FavoriteViewModel()
+            favoriteVC.viewModel = favoriteViewModel
             favoriteVC.didSendEventClosure = { [weak self] event in
                 switch event {
                 case .favorite:

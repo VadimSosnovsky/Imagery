@@ -5,67 +5,75 @@
 //  Created by Вадим Сосновский on 26.10.2022.
 //
 
-import UIKit
+import Foundation
+import Alamofire
 
 protocol NetworkServiceProtocol {
     func fetchImages(searchText: String, completion: @escaping (ImageInfo?) -> Void)
     func loadImages(from url: URL, completion: @escaping (UIImage) -> Void)
+    var cache: NSCache<AnyObject, UIImage> { get }
 }
 
 final class NetworkService: NetworkServiceProtocol {
     
-    static var cache = NSCache<AnyObject, UIImage>()
-    var url: URL?
-    
     static let shared = NetworkService()
     private init() {}
     
+    private(set) var cache = NSCache<AnyObject, UIImage>()
+    
     func fetchImages(searchText: String, completion: @escaping (ImageInfo?) -> Void) {
-        let address = "https://api.unsplash.com/search/photos?page=1&per_page=8&query=\(searchText)&client_id=\(apiKey)"
-        if let url = URL(string: address) {
-            URLSession.shared.dataTask(with: url) { (data, response, error) in
-                if let error = error {
-                    print("Error: \(error)")
-                } else if let response = response as? HTTPURLResponse, let data = data {
-                    print("Status Code: \(response.statusCode)")
-                    do {
-                        let decoder = JSONDecoder()
-                        let picInfo = try decoder.decode(ImageInfo.self, from: data)
-                        completion(picInfo)
-                    } catch {
-                        print(error)
-                    }
-                }
-            }.resume()
+        
+        print("config url is: \(Environment.baseURL)")
+        let url = Environment.baseURL
+        let parameters = [ "query": searchText,
+                           "page": "1",
+                           "per_page": "10"]
+        
+        let headers: HTTPHeaders = ["Authorization": Environment.accessKey]
+        
+        AF.request(url,
+                   method: .get,
+                   parameters: parameters,
+                   encoding: URLEncoding.default,
+                   headers: headers).responseData { (dataResponse) in
+            if let error = dataResponse.error {
+                print("Error: \(error)")
+            }
+            
+            guard let data = dataResponse.data else { return }
+            let resultData = self.decodeJSON(ImageInfo.self, data: data)
+            completion(resultData)
         }
     }
     
     func loadImages(from url: URL, completion: @escaping (UIImage) -> Void) {
         
-        self.url = url
-        
-        if let cachedImage = NetworkService.cache.object(forKey: url as AnyObject) {
+        if let cachedImage = cache.object(forKey: url as AnyObject) {
             completion(cachedImage)
-            print("You get image from cache")
+            print("download from cahce")
         } else {
-            URLSession.shared.dataTask(with: url) { (data, respnse, error) in
-                if let error = error {
-                    print("Error: \(error)")
-                } else if let data = data {
-                    if url == self.url{
-                        DispatchQueue.main.async {
-                            let image = UIImage(data: data)
-                            if let image = image {
-                                completion(image)
-                                NetworkService.cache.setObject(image, forKey: url as AnyObject)
-                                print("You get image from \(url)")
-                            }
-                        }
-                    } else {
-                        print("1111")
-                    }
+            AF.request(url, method: .get).responseData { (dataResponse) in
+                guard let data = dataResponse.data else { print("Error: \(String(describing: dataResponse.error))")
+                                                          return }
+                DispatchQueue.main.async {
+                    let image = UIImage(data: data)
+                    print("download from the internet")
+                    guard let image = image else { return }
+                    completion(image)
+                    self.cache.setObject(image, forKey: url as AnyObject)
                 }
-            }.resume()
+            }
         }
+    }
+    
+    private func decodeJSON<T: Decodable>(_ type: T.Type, data: Data) -> T {
+        do {
+            let decoder = JSONDecoder()
+            let picInfo = try decoder.decode(type.self, from: data)
+            return picInfo
+        } catch {
+            print(error)
+        }
+        return ImageInfo.init(results: [Result]()) as! T
     }
 }

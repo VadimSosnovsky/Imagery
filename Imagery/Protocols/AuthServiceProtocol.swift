@@ -5,7 +5,7 @@
 //  Created by Вадим Сосновский on 26.10.2022.
 //
 
-import UIKit
+import Foundation
 
 protocol AuthServiceProtocol {
     func signIn(withEmail email: String, password: String, authViewModel: AuthViewModel)

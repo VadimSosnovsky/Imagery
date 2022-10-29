@@ -1,0 +1,12 @@
+//
+//  Config.xcconfig
+//  Imagery
+//
+//  Created by Вадим Сосновский on 28.10.2022.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+ACCESS_KEY = Client-ID P-wRLGvgZTyXlEulV70oUi-_pm-dQEgmp1tJczv9hUI
+BASE_URL = https:/$()/api.unsplash.com/search/photos

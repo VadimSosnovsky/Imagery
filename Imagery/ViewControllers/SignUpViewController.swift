@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class SignUpViewController: UIViewController {
     
@@ -31,7 +32,6 @@ class SignUpViewController: UIViewController {
         view.backgroundColor = .white
         
         setupViews()
-        customizeElements()
         setupConstraints()
         setupDelegates()
         
@@ -79,14 +79,7 @@ extension SignUpViewController {
         view.addSubview(loginLabel)
         view.addSubview(elementsStackView)
         view.addSubview(signUpButton)
-    }
-    
-    private func customizeElements() {
-        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-        loginLabel.translatesAutoresizingMaskIntoConstraints = false
-        elementsStackView.translatesAutoresizingMaskIntoConstraints = false
-        signUpButton.translatesAutoresizingMaskIntoConstraints = false
-        emailTextField.translatesAutoresizingMaskIntoConstraints = false
+        
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
     }
 }
@@ -103,35 +96,35 @@ extension SignUpViewController {
 extension SignUpViewController {
     private func setupConstraints() {
         
-        NSLayoutConstraint.activate([
-            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        backgroundImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
         
-        NSLayoutConstraint.activate([
-            loginLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loginLabel.bottomAnchor.constraint(equalTo: elementsStackView.topAnchor, constant: -36)
-        ])
+        loginLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(elementsStackView.snp.top).offset(-36)
+        }
         
-        NSLayoutConstraint.activate([
-            emailTextField.heightAnchor.constraint(equalToConstant: 50)
-        ])
+        emailTextField.snp.makeConstraints { make in
+            make.height.equalTo(50)
+        }
         
-        NSLayoutConstraint.activate([
-            elementsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            elementsStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            elementsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            elementsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24)
-        ])
+        elementsStackView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(24)
+            make.trailing.equalToSuperview().offset(-24)
+        }
         
-        NSLayoutConstraint.activate([
-            signUpButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            signUpButton.topAnchor.constraint(equalTo: elementsStackView.bottomAnchor, constant: 36),
-            signUpButton.heightAnchor.constraint(equalToConstant: 48),
-            signUpButton.widthAnchor.constraint(equalToConstant: 300)
-        ])
+        signUpButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(elementsStackView.snp.bottom).offset(36)
+            make.height.equalTo(48)
+            make.width.equalTo(300)
+        }
     }
 }
 

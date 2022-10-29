@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class WelcomeViewController: UIViewController {
     
@@ -25,7 +26,6 @@ class WelcomeViewController: UIViewController {
         view.backgroundColor = .white
         
         setupViews()
-        customizeElements()
         setupConstraints()
     }
 }
@@ -60,12 +60,6 @@ extension WelcomeViewController {
         
         view.addSubview(backgroundImageView)
         view.addSubview(bottomStackView)
-    }
-    
-    private func customizeElements() {
-        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        bottomStackView.translatesAutoresizingMaskIntoConstraints = false
         
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
@@ -74,21 +68,21 @@ extension WelcomeViewController {
 // MARK: - Setup Constraints
 extension WelcomeViewController {
     private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        backgroundImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
         
-        NSLayoutConstraint.activate([
-            bottomStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            bottomStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            bottomStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100)
-        ])
+        bottomStackView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.bottom.equalToSuperview().offset(-100)
+        }
         
-        NSLayoutConstraint.activate([
-            loginButton.heightAnchor.constraint(equalToConstant: 55)
-        ])
+        loginButton.snp.makeConstraints { make in
+            make.height.equalTo(55)
+        }
     }
 }

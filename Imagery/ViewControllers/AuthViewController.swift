@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class AuthViewController: UIViewController {
     
@@ -37,7 +38,6 @@ class AuthViewController: UIViewController {
         
         viewModel.delegate = self
         setupViews()
-        customizeElements()
         setupConstraints()
         
         viewModel.viewDidLoad()
@@ -94,13 +94,6 @@ extension AuthViewController {
         view.addSubview(loginLabel)
         view.addSubview(textFiledsStackView)
         view.addSubview(buttonsStackView)
-    }
-    
-    private func customizeElements() {
-        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-        loginLabel.translatesAutoresizingMaskIntoConstraints = false
-        textFiledsStackView.translatesAutoresizingMaskIntoConstraints = false
-        buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
         
         if let button = passwordTextField.rightView as? UIButton {
             button.addTarget(self, action: #selector(showAndHideCharactersTapped), for: .touchUpInside)
@@ -116,32 +109,32 @@ extension AuthViewController {
 // MARK: - Setup Constraints
 extension AuthViewController {
     private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        backgroundImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
         
-        NSLayoutConstraint.activate([
-            loginLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loginLabel.bottomAnchor.constraint(equalTo: textFiledsStackView.topAnchor, constant: -36)
-        ])
+        loginLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(textFiledsStackView.snp.top).offset(-36)
+        }
         
-        NSLayoutConstraint.activate([
-            textFiledsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            textFiledsStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            textFiledsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            textFiledsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            textFiledsStackView.heightAnchor.constraint(equalToConstant: 96)
-        ])
+        textFiledsStackView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(24)
+            make.trailing.equalToSuperview().offset(-24)
+            make.height.equalTo(96)
+        }
         
-        NSLayoutConstraint.activate([
-            buttonsStackView.topAnchor.constraint(equalTo: textFiledsStackView.bottomAnchor, constant: 36),
-            buttonsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            buttonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            buttonsStackView.heightAnchor.constraint(equalToConstant: 48)
-        ])
+        buttonsStackView.snp.makeConstraints { make in
+            make.top.equalTo(textFiledsStackView.snp.bottom).offset(36)
+            make.leading.equalToSuperview().offset(24)
+            make.trailing.equalToSuperview().offset(-24)
+            make.height.equalTo(48)
+        }
     }
 }
 
