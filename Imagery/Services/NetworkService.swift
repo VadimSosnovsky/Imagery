@@ -27,7 +27,7 @@ final class NetworkService: NetworkServiceProtocol {
         let url = Environment.baseURL
         let parameters = [ "query": searchText,
                            "page": "1",
-                           "per_page": "10"]
+                           "per_page": "30"]
         
         let headers: HTTPHeaders = ["Authorization": Environment.accessKey]
         

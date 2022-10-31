@@ -12,6 +12,7 @@ class SearchViewController: UIViewController {
     
     var collectionViewManager: CollectionViewManager!
     lazy var collectionView = collectionViewManager.collectionView
+    let activityIndicator = UIActivityIndicatorView()
     var pictureInfo = [Result]()
     
     let searchViewController = UISearchController(searchResultsController: nil)
@@ -21,10 +22,14 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .mainWhite()
         
         collectionViewManager = CollectionViewManager()
         collectionViewManager.viewModel = CollectionViewCellViewModel()
+        
+        collectionViewManager.onUpdate = { [weak self] in
+            self?.activityIndicator.stopAnimating()
+        }
         
         setupNavigationBar()
         setupViews()
@@ -37,6 +42,7 @@ class SearchViewController: UIViewController {
 extension SearchViewController {
     private func setupViews() {
         view.addSubview(collectionView)
+        view.addSubview(activityIndicator)
     }
     
     private func setupNavigationBar() {
@@ -56,6 +62,11 @@ extension SearchViewController {
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
+        
+        activityIndicator.snp.makeConstraints { make in
+            make.centerX.equalTo(collectionView.snp.centerX)
+            make.centerY.equalTo(collectionView.snp.centerY)
+        }
     }
 }
 
@@ -70,6 +81,7 @@ extension SearchViewController {
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.searchImages(with: searchText) { [weak self] result in
+            self?.activityIndicator.startAnimating()
             self?.collectionViewManager.pictureInfo = result
         }
     }

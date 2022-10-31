@@ -26,11 +26,19 @@ final class ImageryTabBarCoordinator: Coordinator {
         prepareTabBarController(withTabControllers: controllers)
     }
     
+    func startDetailScene() {
+//        let authCoordinator = AuthCoordinator(navigationController: navigationController)
+//        authCoordinator.parentCoordinator = self
+//        childCoordinators.append(authCoordinator)
+//        authCoordinator.start()
+    }
+    
     private func prepareTabBarController(withTabControllers tabControllers: [UIViewController]) {
         tabBarController.setViewControllers(tabControllers, animated: true)
         tabBarController.tabBar.tintColor = .mainDark()
         tabBarController.selectedIndex = TabBarPage.search.pageOrderNumber()
-        navigationController.setViewControllers([tabBarController], animated: true)
+        tabBarController.modalPresentationStyle = .fullScreen
+        navigationController.present(tabBarController, animated: true)
     }
     
     private func getTabController(_ page: TabBarPage) -> UINavigationController {
@@ -56,6 +64,7 @@ final class ImageryTabBarCoordinator: Coordinator {
             let favoriteVC = FavoriteViewController()
             let favoriteViewModel = FavoriteViewModel()
             favoriteVC.viewModel = favoriteViewModel
+            favoriteVC.viewModel.coordinator = self
             favoriteVC.didSendEventClosure = { [weak self] event in
                 switch event {
                 case .favorite:
@@ -70,5 +79,13 @@ final class ImageryTabBarCoordinator: Coordinator {
     
     func selectPage(_ page: TabBarPage) {
         tabBarController.selectedIndex = page.pageOrderNumber()
+    }
+    
+    func didFinish() {
+        parentCoordinator?.childDidFinish(self)
+    }
+    
+    func didFinishTabBar() {
+        navigationController.dismiss(animated: true, completion: nil)
     }
 }

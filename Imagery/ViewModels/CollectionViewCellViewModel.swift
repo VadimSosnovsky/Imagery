@@ -18,4 +18,8 @@ final class CollectionViewCellViewModel {
             }
         }
     }
+    
+    func tappedAtImage(atIndexPath: IndexPath) {
+        
+    }
 }

@@ -9,24 +9,7 @@ import UIKit
 
 class CollectionViewManager: NSObject {
     
-    var viewModel: CollectionViewCellViewModel!
-    
-    var pictureInfo = [Result]() {
-        didSet {
-            images = []
-            viewModel.loadImages(from: pictureInfo) { image in
-                self.images.append(image)
-            }
-        }
-    }
-    
-    var images = [UIImage]() {
-        didSet {
-            if images.count == pictureInfo.count {
-                self.collectionView.reloadData()
-            }
-        }
-    }
+    var onUpdate = {}
     
     var collectionView: UICollectionView = {
         let layout = PinterestLayout()
@@ -38,6 +21,27 @@ class CollectionViewManager: NSObject {
         
         return collectionView
     }()
+    
+    var viewModel: CollectionViewCellViewModel!
+    
+    var pictureInfo = [Result]() {
+        didSet {
+            images = []
+            collectionView.reloadData()
+            viewModel.loadImages(from: pictureInfo) { image in
+                self.images.append(image)
+            }
+        }
+    }
+    
+    var images = [UIImage]() {
+        didSet {
+            if images.count == pictureInfo.count {
+                self.collectionView.reloadData()
+                onUpdate()
+            }
+        }
+    }
     
     override init() {
         super.init()
@@ -60,6 +64,10 @@ extension CollectionViewManager: UICollectionViewDelegate, UICollectionViewDataS
 
         cell.configure(with: self.images[indexPath.row])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.tappedAtImage(atIndexPath: indexPath)
     }
 }
 

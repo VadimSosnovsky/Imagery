@@ -31,6 +31,7 @@ final class SignUpCoordinator: Coordinator {
     }
     
     func didFinishSignUp() {
+        print("stack is \(navigationController.viewControllers)")
         parentCoordinator?.onUpdateAuthScene()
         navigationController.dismiss(animated: true, completion: nil)
     }

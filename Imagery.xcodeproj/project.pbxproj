@@ -17,6 +17,7 @@
 		892D9DAB290868E3006E3A59 /* TabBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892D9DAA290868E3006E3A59 /* TabBarPage.swift */; };
 		892D9DAD29086C25006E3A59 /* AlertViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892D9DAC29086C25006E3A59 /* AlertViewModelDelegate.swift */; };
 		892D9DB129086E6F006E3A59 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892D9DB029086E6F006E3A59 /* AuthService.swift */; };
+		89336539290FFD2B00088A15 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89336538290FFD2B00088A15 /* DetailViewController.swift */; };
 		895CD4822903110400E1933C /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895CD4812903110400E1933C /* AuthViewController.swift */; };
 		895CD4842903112600E1933C /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895CD4832903112600E1933C /* AuthCoordinator.swift */; };
 		895CD4862903113200E1933C /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895CD4852903113200E1933C /* AuthViewModel.swift */; };
@@ -88,6 +89,7 @@
 		892D9DAC29086C25006E3A59 /* AlertViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModelDelegate.swift; sourceTree = "<group>"; };
 		892D9DB029086E6F006E3A59 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		892D9E31290BDFCB004829A1 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		89336538290FFD2B00088A15 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		895CD4812903110400E1933C /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		895CD4832903112600E1933C /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		895CD4852903113200E1933C /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				895CD4812903110400E1933C /* AuthViewController.swift */,
 				8907462F2906B7D80020E2F6 /* SignUpViewController.swift */,
 				899AAE092908039A0081EC29 /* SearchViewController.swift */,
+				89336538290FFD2B00088A15 /* DetailViewController.swift */,
 				899AAE0B2908041C0081EC29 /* FavoriteViewController.swift */,
 			);
 			path = ViewControllers;
@@ -573,6 +576,7 @@
 				89D01913290D28DB00ACB383 /* Constants.swift in Sources */,
 				897143892906FFC300704741 /* String + Extensions.swift in Sources */,
 				89AE484E290AB52200665296 /* ImageInfo.swift in Sources */,
+				89336539290FFD2B00088A15 /* DetailViewController.swift in Sources */,
 				895CD488290315AA00E1933C /* AuthTextField.swift in Sources */,
 				899B6D282902B746008DCB6F /* UIStackView + Extensions.swift in Sources */,
 				8973E342290970D0008664C5 /* NetworkService.swift in Sources */,

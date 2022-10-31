@@ -13,6 +13,7 @@ final class SearchViewModel {
     var networService = NetworkService.shared
     
     func searchImages(with searchText: String, completion: @escaping ([Result]) -> Void) {
+        
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { [weak self] (_) in
             self?.networService.fetchImages(searchText: searchText) { (imageInfo) in

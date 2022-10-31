@@ -47,6 +47,16 @@ class AuthViewController: UIViewController {
         
         textFields = [emailTextField, passwordTextField]
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        emailTextField.text = nil
+        passwordTextField.text = nil
+    }
+    
+    deinit {
+        print("auth deinit")
+    }
 }
 
 // MARK: - AuthViewModelDelegate
