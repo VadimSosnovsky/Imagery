@@ -16,7 +16,6 @@ class SearchViewController: UIViewController {
     var pictureInfo = [Result]()
     
     let searchViewController = UISearchController(searchResultsController: nil)
-    var didSendEventClosure: ((SearchViewController.Event) -> Void)?
     var viewModel: SearchViewModel!
     var networService = NetworkService.shared
     
@@ -29,6 +28,10 @@ class SearchViewController: UIViewController {
         
         collectionViewManager.onUpdate = { [weak self] in
             self?.activityIndicator.stopAnimating()
+        }
+        
+        collectionViewManager.viewModel.completion = { [weak self] in
+            self?.viewModel.tappedAtCell()
         }
         
         setupNavigationBar()
@@ -84,12 +87,5 @@ extension SearchViewController: UISearchBarDelegate {
             self?.activityIndicator.startAnimating()
             self?.collectionViewManager.pictureInfo = result
         }
-    }
-}
-
-// MARK: - TabBar Events setup
-extension SearchViewController {
-    enum Event {
-        case search
     }
 }

@@ -18,6 +18,10 @@
 		892D9DAD29086C25006E3A59 /* AlertViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892D9DAC29086C25006E3A59 /* AlertViewModelDelegate.swift */; };
 		892D9DB129086E6F006E3A59 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892D9DB029086E6F006E3A59 /* AuthService.swift */; };
 		89336539290FFD2B00088A15 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89336538290FFD2B00088A15 /* DetailViewController.swift */; };
+		8944456F2910303100903200 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8944456E2910303100903200 /* DetailCoordinator.swift */; };
+		89444571291030E300903200 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89444570291030E300903200 /* DetailViewModel.swift */; };
+		894445732910317200903200 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894445722910317200903200 /* SearchCoordinator.swift */; };
+		8944457529103A0300903200 /* FavoriteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8944457429103A0300903200 /* FavoriteCoordinator.swift */; };
 		895CD4822903110400E1933C /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895CD4812903110400E1933C /* AuthViewController.swift */; };
 		895CD4842903112600E1933C /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895CD4832903112600E1933C /* AuthCoordinator.swift */; };
 		895CD4862903113200E1933C /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895CD4852903113200E1933C /* AuthViewModel.swift */; };
@@ -90,6 +94,10 @@
 		892D9DB029086E6F006E3A59 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		892D9E31290BDFCB004829A1 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		89336538290FFD2B00088A15 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		8944456E2910303100903200 /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
+		89444570291030E300903200 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		894445722910317200903200 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		8944457429103A0300903200 /* FavoriteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCoordinator.swift; sourceTree = "<group>"; };
 		895CD4812903110400E1933C /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		895CD4832903112600E1933C /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		895CD4852903113200E1933C /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -336,6 +344,9 @@
 				895CD4832903112600E1933C /* AuthCoordinator.swift */,
 				890746312906B7E40020E2F6 /* SignUpCoordinator.swift */,
 				89C7A50D2902AE0600D4C87E /* WelcomeCoordinator.swift */,
+				894445722910317200903200 /* SearchCoordinator.swift */,
+				8944457429103A0300903200 /* FavoriteCoordinator.swift */,
+				8944456E2910303100903200 /* DetailCoordinator.swift */,
 				899AAE15290808060081EC29 /* ImageryTabBarCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -359,6 +370,7 @@
 				895CD4852903113200E1933C /* AuthViewModel.swift */,
 				890746332906B7FB0020E2F6 /* SignUpViewModel.swift */,
 				899AAE112908069D0081EC29 /* SearchViewModel.swift */,
+				89444570291030E300903200 /* DetailViewModel.swift */,
 				899AAE13290806A40081EC29 /* FavoriteViewModel.swift */,
 				8973021A290C5D8A005C1B13 /* CollectionViewCellViewModel.swift */,
 			);
@@ -560,6 +572,7 @@
 				899AAE14290806A40081EC29 /* FavoriteViewModel.swift in Sources */,
 				8973021B290C5D8A005C1B13 /* CollectionViewCellViewModel.swift in Sources */,
 				89AE4850290AB53000665296 /* Result.swift in Sources */,
+				8944456F2910303100903200 /* DetailCoordinator.swift in Sources */,
 				890746302906B7D80020E2F6 /* SignUpViewController.swift in Sources */,
 				895CD4862903113200E1933C /* AuthViewModel.swift in Sources */,
 				89C7A50C2902ADEA00D4C87E /* AppCoordinator.swift in Sources */,
@@ -579,6 +592,8 @@
 				89336539290FFD2B00088A15 /* DetailViewController.swift in Sources */,
 				895CD488290315AA00E1933C /* AuthTextField.swift in Sources */,
 				899B6D282902B746008DCB6F /* UIStackView + Extensions.swift in Sources */,
+				894445732910317200903200 /* SearchCoordinator.swift in Sources */,
+				89444571291030E300903200 /* DetailViewModel.swift in Sources */,
 				8973E342290970D0008664C5 /* NetworkService.swift in Sources */,
 				895CD4822903110400E1933C /* AuthViewController.swift in Sources */,
 				899B6D1D2902B441008DCB6F /* UIImageView + Extensions.swift in Sources */,
@@ -586,6 +601,7 @@
 				89C7A4D62902ACE500D4C87E /* AppDelegate.swift in Sources */,
 				8913F628290961C900ECC5E9 /* CollectionViewCell.swift in Sources */,
 				899B6D1F2902B5D6008DCB6F /* UILabel + Extensions.swift in Sources */,
+				8944457529103A0300903200 /* FavoriteCoordinator.swift in Sources */,
 				899AAE16290808070081EC29 /* ImageryTabBarCoordinator.swift in Sources */,
 				899AAE122908069D0081EC29 /* SearchViewModel.swift in Sources */,
 				899AAE0C2908041C0081EC29 /* FavoriteViewController.swift in Sources */,

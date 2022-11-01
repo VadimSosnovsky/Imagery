@@ -8,11 +8,12 @@
 import UIKit
 
 final class AuthCoordinator: Coordinator {
+    
     var childCoordinators: [Coordinator] = []
     var onUpdateAuthScene = {}
     
     private let navigationController: UINavigationController
-    var parentCoordinator: WelcomeCoordinator?
+    weak var parentCoordinator: WelcomeCoordinator?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -39,6 +40,8 @@ final class AuthCoordinator: Coordinator {
         imageryTabBarCoordinator.parentCoordinator = self
         childCoordinators.append(imageryTabBarCoordinator)
         imageryTabBarCoordinator.start()
+        print(childCoordinators)
+        print(childCoordinators.count)
     }
     
     func childDidFinish(_ childCoordinator: Coordinator) {

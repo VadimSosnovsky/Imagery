@@ -13,8 +13,11 @@ class DetailViewController: UIViewController {
     private let imageView = UIImageView(image: UIImage(systemName: "circle"), contentMode: .scaleAspectFill)
     private let saveButton = UIButton(title: "Save image")
     
+    var viewModel: DetailViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBlue
         
         setupViews()
         setupConstraints()

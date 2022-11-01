@@ -11,6 +11,7 @@ final class SearchViewModel {
     
     var timer: Timer?
     var networService = NetworkService.shared
+    var coordinator: SearchCoordinator?
     
     func searchImages(with searchText: String, completion: @escaping ([Result]) -> Void) {
         
@@ -22,5 +23,10 @@ final class SearchViewModel {
                 }
             }
         })
+    }
+    
+    func tappedAtCell() {
+        print("tappedAtCell ------------>")
+        coordinator?.startDetailScene()
     }
 }

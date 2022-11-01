@@ -11,7 +11,7 @@ final class SignUpCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     
     private let navigationController: UINavigationController
-    var parentCoordinator: AuthCoordinator?
+    weak var parentCoordinator: AuthCoordinator?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -34,5 +34,9 @@ final class SignUpCoordinator: Coordinator {
         print("stack is \(navigationController.viewControllers)")
         parentCoordinator?.onUpdateAuthScene()
         navigationController.dismiss(animated: true, completion: nil)
+    }
+    
+    deinit {
+        print("SignUpCoordinator deinit")
     }
 }

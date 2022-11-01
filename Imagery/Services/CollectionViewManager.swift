@@ -67,7 +67,7 @@ extension CollectionViewManager: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.tappedAtImage(atIndexPath: indexPath)
+        viewModel.tappedAtCell(withImage: self.images[indexPath.row])
     }
 }
 

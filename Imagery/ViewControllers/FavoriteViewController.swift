@@ -14,7 +14,6 @@ class FavoriteViewController: UIViewController {
     var collectionViewManager: CollectionViewManager!
     lazy var collectionView = collectionViewManager.collectionView
     
-    var didSendEventClosure: ((FavoriteViewController.Event) -> Void)?
     var viewModel: FavoriteViewModel!
     
     override func viewDidLoad() {
@@ -31,7 +30,7 @@ class FavoriteViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        viewModel.viewDidDisappear()
+        print("FavoriteViewController disapeeared --->")
     }
 }
 
@@ -70,11 +69,5 @@ extension FavoriteViewController {
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
-    }
-}
-
-extension FavoriteViewController {
-    enum Event {
-        case favorite
     }
 }

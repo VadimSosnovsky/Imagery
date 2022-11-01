@@ -10,7 +10,7 @@ import UIKit
 final class ImageryTabBarCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator] = []
-    var parentCoordinator: AuthCoordinator?
+    weak var parentCoordinator: AuthCoordinator?
     
     private let navigationController: UINavigationController
     var tabBarController: UITabBarController
@@ -21,16 +21,11 @@ final class ImageryTabBarCoordinator: Coordinator {
     }
     
     func start() {
+        print("ImageryTabBarCoordinator Start")
         let pages: [TabBarPage] = [.search, .favorite]
         let controllers: [UINavigationController] = pages.map({ getTabController($0) })
         prepareTabBarController(withTabControllers: controllers)
-    }
-    
-    func startDetailScene() {
-//        let authCoordinator = AuthCoordinator(navigationController: navigationController)
-//        authCoordinator.parentCoordinator = self
-//        childCoordinators.append(authCoordinator)
-//        authCoordinator.start()
+        print("ImageryTabBarCoordinator childs is: \(childCoordinators)")
     }
     
     private func prepareTabBarController(withTabControllers tabControllers: [UIViewController]) {
@@ -49,43 +44,36 @@ final class ImageryTabBarCoordinator: Coordinator {
 
         switch page {
         case .search:
-            let searchVC = SearchViewController()
-            let searchViewModel = SearchViewModel()
-            searchVC.viewModel = searchViewModel
-            searchVC.didSendEventClosure = { [weak self] event in
-                switch event {
-                case .search:
-                    self?.selectPage(.search)
-                }
-            }
-            navigationController.pushViewController(searchVC, animated: true)
+            let searchCoordinator = SearchCoordinator(navigationController: navigationController)
+            searchCoordinator.parentCoordinator = self
+            childCoordinators.append(searchCoordinator)
+            searchCoordinator.start()
             
         case .favorite:
-            let favoriteVC = FavoriteViewController()
-            let favoriteViewModel = FavoriteViewModel()
-            favoriteVC.viewModel = favoriteViewModel
-            favoriteVC.viewModel.coordinator = self
-            favoriteVC.didSendEventClosure = { [weak self] event in
-                switch event {
-                case .favorite:
-                    self?.selectPage(.favorite)
-                }
-            }
-            navigationController.pushViewController(favoriteVC, animated: true)
+            let favoriteCoordinator = FavoriteCoordinator(navigationController: navigationController)
+            favoriteCoordinator.parentCoordinator = self
+            childCoordinators.append(favoriteCoordinator)
+            favoriteCoordinator.start()
         }
         
         return navigationController
     }
     
-    func selectPage(_ page: TabBarPage) {
-        tabBarController.selectedIndex = page.pageOrderNumber()
+    func childDidFinish(_ childCoordinator: Coordinator) {
+        if let index = childCoordinators.firstIndex(where: { coordinator -> Bool in
+            return childCoordinator === coordinator
+        }) {
+            childCoordinators.remove(at: index)
+        }
     }
     
-    func didFinish() {
+    func didFinishImageryTabBar() {
+        childCoordinators = []
         parentCoordinator?.childDidFinish(self)
+        navigationController.dismiss(animated: true, completion: nil)
     }
     
-    func didFinishTabBar() {
-        navigationController.dismiss(animated: true, completion: nil)
+    deinit {
+        print("ImageryTabBarCoordinator Deinit")
     }
 }
