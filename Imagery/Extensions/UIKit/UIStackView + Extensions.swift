@@ -14,5 +14,6 @@ extension UIStackView {
         self.spacing = spacing
         self.distribution = distribution
         self.alignment = alignment
+        self.isLayoutMarginsRelativeArrangement = true
     }
 }

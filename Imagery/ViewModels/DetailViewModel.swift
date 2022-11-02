@@ -6,10 +6,28 @@
 //
 
 import Foundation
+import UIKit
 
 final class DetailViewModel {
     
     var coordinator: DetailCoordinator?
+    var selectedImage: UIImage
+    
+    init(selectedImage: UIImage) {
+        self.selectedImage = selectedImage
+    }
+    
+    func saveImageButtonTapped() {
+        
+    }
+    
+    func backButtonTapped() {
+        coordinator?.didFinishDetailScene()
+    }
+    
+    func viewDidDisappear() {
+        coordinator?.didFinish()
+    }
 }
 
 

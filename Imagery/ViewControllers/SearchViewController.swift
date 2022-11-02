@@ -30,8 +30,8 @@ class SearchViewController: UIViewController {
             self?.activityIndicator.stopAnimating()
         }
         
-        collectionViewManager.viewModel.completion = { [weak self] in
-            self?.viewModel.tappedAtCell()
+        collectionViewManager.completion = { [weak self] image in
+            self?.viewModel.didSelectItem(withImage: image)
         }
         
         setupNavigationBar()

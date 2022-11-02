@@ -11,6 +11,7 @@ import Alamofire
 protocol NetworkServiceProtocol {
     func fetchImages(searchText: String, completion: @escaping (ImageInfo?) -> Void)
     func loadImages(from url: URL, completion: @escaping (UIImage) -> Void)
+    func decodeJSON<T: Decodable>(_ type: T.Type, data: Data) -> T
     var cache: NSCache<AnyObject, UIImage> { get }
 }
 
@@ -66,7 +67,7 @@ final class NetworkService: NetworkServiceProtocol {
         }
     }
     
-    private func decodeJSON<T: Decodable>(_ type: T.Type, data: Data) -> T {
+    func decodeJSON<T: Decodable>(_ type: T.Type, data: Data) -> T {
         do {
             let decoder = JSONDecoder()
             let picInfo = try decoder.decode(type.self, from: data)

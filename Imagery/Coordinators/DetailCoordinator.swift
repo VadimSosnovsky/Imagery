@@ -13,18 +13,27 @@ final class DetailCoordinator: Coordinator {
     weak var parentCoordinator: SearchCoordinator?
     
     private let navigationController: UINavigationController
+    private let selectedImage: UIImage
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, selectedImage: UIImage) {
         self.navigationController = navigationController
+        self.selectedImage = selectedImage
     }
     
     func start() {
         let detailViewController = DetailViewController()
-        let detailViewModel = DetailViewModel()
+        let detailViewModel = DetailViewModel(selectedImage: selectedImage)
         detailViewModel.coordinator = self
         detailViewController.viewModel = detailViewModel
-        navigationController.setViewControllers([detailViewController], animated: true)
         detailViewController.modalPresentationStyle = .fullScreen
         navigationController.present(detailViewController, animated: true)
+    }
+    
+    func didFinish() {
+        parentCoordinator?.childDidFinish(self)
+    }
+    
+    func didFinishDetailScene() {
+        navigationController.dismiss(animated: true, completion: nil)
     }
 }

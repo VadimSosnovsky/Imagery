@@ -43,12 +43,4 @@ final class AuthCoordinator: Coordinator {
         print(childCoordinators)
         print(childCoordinators.count)
     }
-    
-    func childDidFinish(_ childCoordinator: Coordinator) {
-        if let index = childCoordinators.firstIndex(where: { coordinator -> Bool in
-            return childCoordinator === coordinator
-        }) {
-            childCoordinators.remove(at: index)
-        }
-    }
 }

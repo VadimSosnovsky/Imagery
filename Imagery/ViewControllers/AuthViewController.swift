@@ -66,22 +66,6 @@ extension AuthViewController: AlertViewModelDelegate {
     }
 }
 
-// MARK: - Setup IBActions
-extension AuthViewController {
-    
-    @objc private func showAndHideCharactersTapped() {
-        viewModel.showAndHideCharactersTapped(passwordTextField: passwordTextField)
-    }
-    
-    @objc private func signInButtonTapped() {
-        viewModel.signInButtonTapped(textFields: textFields)
-    }
-    
-    @objc private func signUpButtonTapped() {
-        viewModel.signUpButtonTapped()
-    }
-}
-
 // MARK: - Setup Views
 extension AuthViewController {
     private func setupViews() {
@@ -106,13 +90,29 @@ extension AuthViewController {
         view.addSubview(buttonsStackView)
         
         if let button = passwordTextField.rightView as? UIButton {
-            button.addTarget(self, action: #selector(showAndHideCharactersTapped), for: .touchUpInside)
+            button.addTarget(self, action: #selector(showAndHideCharactersButtonTapped), for: .touchUpInside)
         }
         
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         signInButton.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside)
         
         passwordTextField.isSecureTextEntry = true
+    }
+}
+
+// MARK: - Setup IBActions
+extension AuthViewController {
+    
+    @objc private func showAndHideCharactersButtonTapped() {
+        viewModel.showAndHideCharactersButtonTapped(passwordTextField: passwordTextField)
+    }
+    
+    @objc private func signInButtonTapped() {
+        viewModel.signInButtonTapped(textFields: textFields)
+    }
+    
+    @objc private func signUpButtonTapped() {
+        viewModel.signUpButtonTapped()
     }
 }
 

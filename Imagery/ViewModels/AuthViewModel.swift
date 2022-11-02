@@ -22,7 +22,7 @@ final class AuthViewModel {
        onUpdate()
     }
     
-    func showAndHideCharactersTapped(passwordTextField: UITextField) {
+    func showAndHideCharactersButtonTapped(passwordTextField: UITextField) {
         if passwordTextField.isSecureTextEntry {
             passwordTextField.isSecureTextEntry = false
         } else {

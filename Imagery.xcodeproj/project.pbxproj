@@ -31,6 +31,7 @@
 		8973021B290C5D8A005C1B13 /* CollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8973021A290C5D8A005C1B13 /* CollectionViewCellViewModel.swift */; };
 		8973E342290970D0008664C5 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8973E341290970D0008664C5 /* NetworkService.swift */; };
 		8973E34A2909A68F008664C5 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8973E3492909A68F008664C5 /* Environment.swift */; };
+		897AD7A429129B3E00729B07 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897AD7A329129B3E00729B07 /* UIView + Extensions.swift */; };
 		899AAE0A2908039A0081EC29 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899AAE092908039A0081EC29 /* SearchViewController.swift */; };
 		899AAE0C2908041C0081EC29 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899AAE0B2908041C0081EC29 /* FavoriteViewController.swift */; };
 		899AAE122908069D0081EC29 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899AAE112908069D0081EC29 /* SearchViewModel.swift */; };
@@ -107,6 +108,7 @@
 		8973021A290C5D8A005C1B13 /* CollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		8973E341290970D0008664C5 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		8973E3492909A68F008664C5 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		897AD7A329129B3E00729B07 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		899AAE092908039A0081EC29 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		899AAE0B2908041C0081EC29 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		899AAE112908069D0081EC29 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				899B6D272902B746008DCB6F /* UIStackView + Extensions.swift */,
 				897143862906FEF200704741 /* UIViewController + Extensions.swift */,
 				897143882906FFC300704741 /* String + Extensions.swift */,
+				897AD7A329129B3E00729B07 /* UIView + Extensions.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -330,9 +333,9 @@
 				89C7A4D92902ACE500D4C87E /* WelcomeViewController.swift */,
 				895CD4812903110400E1933C /* AuthViewController.swift */,
 				8907462F2906B7D80020E2F6 /* SignUpViewController.swift */,
+				899AAE0B2908041C0081EC29 /* FavoriteViewController.swift */,
 				899AAE092908039A0081EC29 /* SearchViewController.swift */,
 				89336538290FFD2B00088A15 /* DetailViewController.swift */,
-				899AAE0B2908041C0081EC29 /* FavoriteViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				899AAE122908069D0081EC29 /* SearchViewModel.swift in Sources */,
 				899AAE0C2908041C0081EC29 /* FavoriteViewController.swift in Sources */,
 				89C7A50A2902ADC600D4C87E /* Coordinator.swift in Sources */,
+				897AD7A429129B3E00729B07 /* UIView + Extensions.swift in Sources */,
 				8973E34A2909A68F008664C5 /* Environment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

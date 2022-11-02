@@ -10,7 +10,7 @@ import UIKit
 final class CollectionViewCellViewModel {
     
     var networkService = NetworkService.shared
-    var completion: () -> () = {}
+    var completion: (UIImage) -> () = {_ in }
  
     func loadImages(from imagesInfoArray: [Result], completion: @escaping ((UIImage) -> Void)) {
         for item in imagesInfoArray {
@@ -18,9 +18,5 @@ final class CollectionViewCellViewModel {
                 completion(image)
             }
         }
-    }
-    
-    func tappedAtCell(withImage image: UIImage) {
-        completion()
     }
 }

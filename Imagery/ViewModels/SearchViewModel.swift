@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class SearchViewModel {
     
@@ -25,8 +26,7 @@ final class SearchViewModel {
         })
     }
     
-    func tappedAtCell() {
-        print("tappedAtCell ------------>")
-        coordinator?.startDetailScene()
+    func didSelectItem(withImage image: UIImage) {
+        coordinator?.startDetailScene(withImage: image)
     }
 }

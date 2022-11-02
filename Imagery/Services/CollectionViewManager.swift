@@ -9,7 +9,9 @@ import UIKit
 
 class CollectionViewManager: NSObject {
     
+    var selectedImage: UIImage?
     var onUpdate = {}
+    var completion: (UIImage) -> Void = { _ in }
     
     var collectionView: UICollectionView = {
         let layout = PinterestLayout()
@@ -67,7 +69,7 @@ extension CollectionViewManager: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.tappedAtCell(withImage: self.images[indexPath.row])
+        completion(self.images[indexPath.row])
     }
 }
 
