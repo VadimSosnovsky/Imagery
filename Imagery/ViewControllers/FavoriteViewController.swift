@@ -15,6 +15,7 @@ class FavoriteViewController: UIViewController {
     lazy var collectionView = collectionViewManager.collectionView
     
     var viewModel: FavoriteViewModel!
+    let shared = RealmService.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,22 @@ class FavoriteViewController: UIViewController {
         setupViews()
         setupConstraints()
         setupNavigationBar()
+        
+        let images = Array(shared.getDataFromDatabase())
+        var arrayOfImage = [UIImage]()
+        
+        for imageRealm in images {
+            let data = imageRealm.image
+            let image = UIImage(data: data)
+            guard let image = image else { return }
+            arrayOfImage.append(image)
+        }
+        
+        collectionViewManager.images = arrayOfImage
+        
+        shared.completion = { [weak self] in
+
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {

@@ -22,6 +22,11 @@ final class AuthService: AuthServiceProtocol {
 //                authViewModel.coordinator?.startImageryScene()
 //            }
 //        }
+        
+        let component = "\(email).realm"
+        RealmService.shared.userKey = email
+        RealmService.shared.createDatabaseIfNeeded(withComponent: component)
+        
         authViewModel.coordinator?.startImageryScene()
     }
     

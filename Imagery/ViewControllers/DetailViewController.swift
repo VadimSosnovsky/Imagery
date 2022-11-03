@@ -32,13 +32,12 @@ class DetailViewController: UIViewController {
         viewModel.viewDidDisappear()
     }
     
-    override func viewDidLayoutSubviews() {
-        // Засунуть в другой метод, так как этот может вызываться несколько раз!!!
-        saveImageButton.layer.cornerRadius = 15
-        imageView.roundCornersForAspectFit(radius: 15)
-        stackView.backgroundColor = .mainDark()
-        stackView.directionalLayoutMargins = Constants.stackViewEdgeInsets
-        stackView.setupCornerRadius(cornerRadii: Constants.cornerRadii, roundingCorners: [.topLeft, .topRight])
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        customizeElements()
     }
 }
 
@@ -60,6 +59,14 @@ extension DetailViewController {
         
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         saveImageButton.addTarget(self, action: #selector(saveImageButtonTapped), for: .touchUpInside)
+    }
+    
+    private func customizeElements() {
+        saveImageButton.layer.cornerRadius = 15
+        imageView.roundCornersForAspectFit(radius: 15)
+        stackView.backgroundColor = .mainDark()
+        stackView.directionalLayoutMargins = Constants.stackViewEdgeInsets
+        stackView.setupCornerRadius(cornerRadii: Constants.cornerRadii, roundingCorners: [.topLeft, .topRight])
     }
 }
 

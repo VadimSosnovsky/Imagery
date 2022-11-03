@@ -14,6 +14,7 @@ class SearchViewController: UIViewController {
     lazy var collectionView = collectionViewManager.collectionView
     let activityIndicator = UIActivityIndicatorView()
     var pictureInfo = [Result]()
+    var passImage: (UIImage) -> Void = { _ in }
     
     let searchViewController = UISearchController(searchResultsController: nil)
     var viewModel: SearchViewModel!
@@ -31,7 +32,8 @@ class SearchViewController: UIViewController {
         }
         
         collectionViewManager.completion = { [weak self] image in
-            self?.viewModel.didSelectItem(withImage: image)
+            self?.viewModel.selectedImage = image
+            self?.viewModel.didSelectItem()
         }
         
         setupNavigationBar()
