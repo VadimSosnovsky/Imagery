@@ -28,10 +28,21 @@ final class FavoriteCoordinator: Coordinator {
         navigationController.pushViewController(favoriteViewController, animated: true)
     }
     
+    func startRemoveScene(withImage image: UIImage) {
+        let removeCoordinator = RemoveCoordinator(navigationController: navigationController, selectedImage: image)
+        removeCoordinator.parentCoordinator = self
+        childCoordinators.append(removeCoordinator)
+        removeCoordinator.start()
+    }
+    
     func logout() {
         parentCoordinator?.didFinishImageryTabBar()
-        navigationController.dismiss(animated: true, completion: nil)
     }
+    
+    func didFinish() {
+        parentCoordinator?.childDidFinish(self)
+    }
+
     
     deinit {
         print("FavoriteCoordinator Deinit")

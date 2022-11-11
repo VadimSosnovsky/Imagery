@@ -12,9 +12,8 @@ protocol RealmProtocol {
     func createDatabaseIfNeeded(withComponent component: String)
     func addDataToDatabase(data: Data)
     func getDataFromDatabase() -> Results<ImageRealm>
-    func removeDataFromDatabase()
+    func removeDataFromDatabase(data: LazyFilterSequence<Results<ImageRealm>>)
     
     var userKey: String! { get }
     var realm: Realm! { get }
-    var completion: () -> () { get }
 }

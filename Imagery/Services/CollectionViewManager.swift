@@ -19,6 +19,9 @@ class CollectionViewManager: NSObject {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.reuseId)
         collectionView.showsVerticalScrollIndicator = false
+        collectionView.isScrollEnabled = true
+        collectionView.isUserInteractionEnabled = true
+        collectionView.alwaysBounceVertical = true
         collectionView.backgroundColor = .mainWhite()
         
         return collectionView
@@ -74,7 +77,7 @@ extension CollectionViewManager: UICollectionViewDelegate, UICollectionViewDataS
 }
 
 extension CollectionViewManager: PinterestLayoutDelegate {
-    func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat {
-        return images[indexPath.row].size.height / 6
+    func cellSize(indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width / 2, height: images[indexPath.row].size.height / 6)
     }
 }

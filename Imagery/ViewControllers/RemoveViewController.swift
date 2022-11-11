@@ -1,22 +1,21 @@
 //
-//  DetailViewController.swift
+//  RemoveViewController.swift
 //  Imagery
 //
-//  Created by Вадим Сосновский on 31.10.2022.
+//  Created by Вадим Сосновский on 09.11.2022.
 //
 
 import UIKit
 import SnapKit
 
-class DetailViewController: UIViewController {
+class RemoveViewController: UIViewController {
         
     private let imageView = UIImageView(image: UIImage(systemName: "circle"), contentMode: .scaleAspectFit)
-    private let saveImageButton = UIButton(title: "Add to collection")
+    private let removeImageButton = UIButton(title: "Remove from collection")
     private let backButton = UIButton()
     private var stackView = UIStackView()
     
-    var viewModel: DetailViewModel!
-    var searchVC = SearchViewController()
+    var viewModel: RemoveViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,10 +41,10 @@ class DetailViewController: UIViewController {
 }
 
 // MARK: - Setup Views
-extension DetailViewController {
+extension RemoveViewController {
     private func setupViews() {
         stackView = UIStackView(arrangedSubviews: [imageView,
-                                                   saveImageButton],
+                                                   removeImageButton],
                                 axis: .vertical,
                                 spacing: 20,
                                 distribution: .fillProportionally,
@@ -58,22 +57,22 @@ extension DetailViewController {
         view.addSubview(stackView)
         
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-        saveImageButton.addTarget(self, action: #selector(saveImageButtonTapped), for: .touchUpInside)
+        removeImageButton.addTarget(self, action: #selector(removeImageButtonTapped), for: .touchUpInside)
     }
     
     private func customizeElements() {
-        saveImageButton.layer.cornerRadius = 15
+        removeImageButton.layer.cornerRadius = 15
         imageView.roundCornersForAspectFit(radius: 15)
-        stackView.backgroundColor = .mainDark()
+        stackView.backgroundColor = .mainGray()
         stackView.directionalLayoutMargins = Constants.stackViewEdgeInsets
         stackView.setupCornerRadius(cornerRadii: Constants.cornerRadii, roundingCorners: [.topLeft, .topRight])
     }
 }
 
 // MARK: - Setup IBActions
-extension DetailViewController {
-    @objc private func saveImageButtonTapped() {
-        viewModel.saveImageButtonTapped()
+extension RemoveViewController {
+    @objc private func removeImageButtonTapped() {
+        viewModel.removeImageButtonTapped()
     }
     
     @objc private func backButtonTapped() {
@@ -82,7 +81,7 @@ extension DetailViewController {
 }
 
 // MARK: - Setup Constraints
-extension DetailViewController {
+extension RemoveViewController {
     private func setupConstraints() {
         
         backButton.snp.makeConstraints { make in
@@ -97,7 +96,7 @@ extension DetailViewController {
             make.bottom.equalToSuperview()
         }
         
-        saveImageButton.snp.makeConstraints { make in
+        removeImageButton.snp.makeConstraints { make in
             make.height.equalTo(84)
         }
     }

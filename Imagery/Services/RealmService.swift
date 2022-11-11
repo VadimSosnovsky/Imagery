@@ -12,7 +12,6 @@ class RealmService: RealmProtocol {
     
     private init() {}
     static let shared = RealmService()
-    var completion: () -> () = {}
     
     var userKey: String!
     var realm: Realm! {
@@ -32,7 +31,6 @@ class RealmService: RealmProtocol {
         try! realm.write {
             let modelData = ImageRealm(image: data)
             realm.add(modelData)
-            completion()
         }
     }
     
@@ -41,9 +39,9 @@ class RealmService: RealmProtocol {
         return images
     }
     
-    func removeDataFromDatabase() {
+    func removeDataFromDatabase(data: LazyFilterSequence<Results<ImageRealm>>) {
         try! realm.write {
-            realm.deleteAll()
+            realm.delete(data)
         }
     }
 }

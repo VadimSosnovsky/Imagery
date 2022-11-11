@@ -8,5 +8,5 @@
 import UIKit
 
 protocol PinterestLayoutDelegate: AnyObject {
-    func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat
+    func cellSize(indexPath: IndexPath) -> CGSize
 }

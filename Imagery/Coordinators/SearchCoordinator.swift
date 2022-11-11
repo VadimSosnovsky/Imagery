@@ -28,11 +28,11 @@ final class SearchCoordinator: Coordinator {
         navigationController.pushViewController(searchViewController, animated: true)
     }
     
-    func startDetailScene(withImage image: UIImage) {
-        let detailCoordinator = DetailCoordinator(navigationController: navigationController, selectedImage: image)
-        detailCoordinator.parentCoordinator = self
-        childCoordinators.append(detailCoordinator)
-        detailCoordinator.start()
+    func startAddScene(withImage image: UIImage) {
+        let addCoordinator = AddCoordinator(navigationController: navigationController, selectedImage: image)
+        addCoordinator.parentCoordinator = self
+        childCoordinators.append(addCoordinator)
+        addCoordinator.start()
     }
 
     deinit {

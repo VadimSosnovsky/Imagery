@@ -61,6 +61,8 @@ final class ImageryTabBarCoordinator: Coordinator {
     
     func didFinishImageryTabBar() {
         childCoordinators = []
+        tabBarController.viewControllers?.removeAll()
+//        print("stack is \(tabBarController.viewControllers)")
         parentCoordinator?.childDidFinish(self)
         navigationController.dismiss(animated: true, completion: nil)
     }

@@ -12,7 +12,7 @@ final class SearchViewModel {
     
     var timer: Timer?
     var networService = NetworkService.shared
-    var coordinator: SearchCoordinator?
+    weak var coordinator: SearchCoordinator?
     var selectedImage: UIImage?
     
     func searchImages(with searchText: String, completion: @escaping ([Result]) -> Void) {
@@ -29,6 +29,6 @@ final class SearchViewModel {
     
     func didSelectItem() {
         guard let selectedImage = selectedImage else { return }
-        coordinator?.startDetailScene(withImage: selectedImage)
+        coordinator?.startAddScene(withImage: selectedImage)
     }
 }

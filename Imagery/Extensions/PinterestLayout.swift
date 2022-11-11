@@ -7,79 +7,83 @@
 
 import UIKit
 
-class PinterestLayout: UICollectionViewLayout {
-    
-    weak var delegate: PinterestLayoutDelegate?
-    
-    let numberOfColumns = Constants.numberOfColumns
-    let cellPadding = Constants.cellPadding
+import UIKit
 
-    private var cache: [UICollectionViewLayoutAttributes] = []
-    
-    private var contentHeight: CGFloat = 0
-    
-    private var contentWidth: CGFloat {
-        guard let collectionView = collectionView else { return 0 }
-        
-        let insets = collectionView.contentInset
-        return collectionView.bounds.width - (insets.left + insets.right)
+class PinterestLayout: UICollectionViewLayout {
+
+    public let cellPadding: CGFloat = Constants.cellPadding
+    public let columnsCount = Constants.numberOfColumns
+    public var width: CGFloat = 0
+
+    var cachedAttributes = [UICollectionViewLayoutAttributes]()
+    var contentSize: CGSize = .zero
+    public weak var delegate: PinterestLayoutDelegate?
+
+    var contentWidthWithoutPadding: CGFloat {
+        return contentSize.width - 2 * cellPadding
     }
-    
-    override var collectionViewContentSize: CGSize {
-        return CGSize(width: contentWidth, height: contentHeight)
+
+    override public var collectionViewContentSize: CGSize {
+        return contentSize
     }
-    
-    override func prepare() {
-        
-        guard cache.isEmpty,
-              let collectionView = collectionView
-        else { return }
-        
-        let columnWidth = contentWidth / CGFloat(numberOfColumns)
-        var xOffset: [CGFloat] = []
-        for column in 0..<numberOfColumns {
-            xOffset.append(CGFloat(column) * columnWidth)
+
+    override public func prepare() {
+        super.prepare()
+
+        cachedAttributes.removeAll()
+        calculateCollectionViewFrames()
+    }
+
+    override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        return cachedAttributes.filter { $0.frame.intersects(rect) }
+    }
+
+    public func calculateCollectionViewFrames() {
+        guard columnsCount > 0 else {
+            fatalError("Value must be greater than zero")
         }
-        
-        var column = 0
-        var yOffset: [CGFloat] = .init(repeating: 0, count: numberOfColumns)
-        
-        for item in 0..<collectionView.numberOfItems(inSection: 0) {
-            let indexPath = IndexPath(item: item, section: 0)
-            
-            let imageHeight = delegate?.collectionView(collectionView, heightForImageAtIndexPath: indexPath) ?? 180
-            let height = cellPadding * 2 + imageHeight
-            let frame = CGRect(x: xOffset[column],
-                               y: yOffset[column],
-                               width: columnWidth,
-                               height: height)
-            let insertFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
-            
-            let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-            attributes.frame = insertFrame
-            cache.append(attributes)
-            
-            contentHeight = max(contentHeight, frame.maxY)
-            yOffset[column] = yOffset[column] + height
-            
-            column = column < (numberOfColumns - 1) ? (column + 1) : 0
+
+        guard let collectionView = collectionView, let delegate = delegate else {
+            return
         }
-    }
-    
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        
-        var visibleLayoutAttributes: [UICollectionViewLayoutAttributes] = []
-        
-        for attributes in cache {
-            if attributes.frame.intersects(rect) {
-                visibleLayoutAttributes.append(attributes)
+
+        contentSize.width = collectionView.frame.size.width
+
+        let cellsPaddingWidth = CGFloat(columnsCount - 1) * cellPadding
+        let cellWidth = (contentWidthWithoutPadding - cellsPaddingWidth) / CGFloat(columnsCount)
+        width = cellWidth
+        var yOffsets = [CGFloat](repeating: cellPadding, count: columnsCount)
+
+        for section in 0..<collectionView.numberOfSections {
+            let itemsCount = collectionView.numberOfItems(inSection: section)
+
+            for item in 0 ..< itemsCount {
+                let isLastItem = item == itemsCount - 1
+                let indexPath = IndexPath(item: item, section: section)
+
+                let cellhHeight = delegate.cellSize(indexPath: indexPath).height
+                let cellSize = CGSize(width: cellWidth, height: cellhHeight)
+
+                let y = yOffsets.min()!
+                let column = yOffsets.firstIndex(of: y)!
+                let x = CGFloat(column) * (cellWidth + cellPadding) + cellPadding
+                let origin = CGPoint(x: x, y: y)
+
+                let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+                attributes.frame = CGRect(origin: origin, size: cellSize)
+                cachedAttributes.append(attributes)
+
+                yOffsets[column] += cellhHeight + cellPadding
+
+                if isLastItem {
+                    let y = yOffsets.max()!
+                    for index in 0..<yOffsets.count {
+                        yOffsets[index] = y
+                    }
+                }
             }
         }
-        
-        return visibleLayoutAttributes
-    }
-    
-    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return cache[indexPath.row]
+
+        contentSize.height = yOffsets.max()!
     }
 }

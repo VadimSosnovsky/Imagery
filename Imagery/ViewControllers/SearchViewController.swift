@@ -41,6 +41,15 @@ class SearchViewController: UIViewController {
         setupConstraints()
         setupDelegates()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("SearchViewController disappeared ----->")
+    }
+    
+    deinit {
+        print("SearchViewController deinit ----->")
+    }
 }
 
 // MARK: - Setup Views

@@ -51,14 +51,15 @@ final class NetworkService: NetworkServiceProtocol {
         
         if let cachedImage = cache.object(forKey: url as AnyObject) {
             completion(cachedImage)
-            print("download from cahce")
         } else {
             AF.request(url, method: .get).responseData { (dataResponse) in
-                guard let data = dataResponse.data else { print("Error: \(String(describing: dataResponse.error))")
-                                                          return }
+                guard let data = dataResponse.data else {
+                    print("Error: \(String(describing: dataResponse.error))")
+                    return
+                }
+                
                 DispatchQueue.main.async {
                     let image = UIImage(data: data)
-                    print("download from the internet")
                     guard let image = image else { return }
                     completion(image)
                     self.cache.setObject(image, forKey: url as AnyObject)

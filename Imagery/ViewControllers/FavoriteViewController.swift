@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 import FirebaseAuth
 
 class FavoriteViewController: UIViewController {
@@ -14,8 +15,10 @@ class FavoriteViewController: UIViewController {
     var collectionViewManager: CollectionViewManager!
     lazy var collectionView = collectionViewManager.collectionView
     
-    var viewModel: FavoriteViewModel!
     let shared = RealmService.shared
+    
+    var viewModel: FavoriteViewModel!
+    var images = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,30 +27,32 @@ class FavoriteViewController: UIViewController {
         collectionViewManager = CollectionViewManager()
         collectionViewManager.viewModel = CollectionViewCellViewModel()
         
+        collectionViewManager.completion = { [weak self] image in
+            self?.viewModel.selectedImage = image
+            self?.viewModel.didSelectItem()
+        }
+        
         setupViews()
         setupConstraints()
         setupNavigationBar()
         
-        let images = Array(shared.getDataFromDatabase())
-        var arrayOfImage = [UIImage]()
-        
-        for imageRealm in images {
-            let data = imageRealm.image
-            let image = UIImage(data: data)
-            guard let image = image else { return }
-            arrayOfImage.append(image)
-        }
-        
-        collectionViewManager.images = arrayOfImage
-        
-        shared.completion = { [weak self] in
+        self.collectionViewManager.images = viewModel.getImages()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
-        }
+        self.collectionViewManager.images = self.viewModel.getImages()
+        self.collectionView.reloadData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        print("FavoriteViewController disapeeared --->")
+        print("FavoriteViewController disappeared ----->")
+    }
+    
+    deinit {
+        print("FavoriteViewController deinit ----->")
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  DetailCoordinator.swift
+//  AddCoordinator.swift
 //  Imagery
 //
 //  Created by Вадим Сосновский on 31.10.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DetailCoordinator: Coordinator {
+final class AddCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator] = []
     weak var parentCoordinator: SearchCoordinator?
@@ -21,19 +21,24 @@ final class DetailCoordinator: Coordinator {
     }
     
     func start() {
-        let detailViewController = DetailViewController()
-        let detailViewModel = DetailViewModel(selectedImage: selectedImage)
-        detailViewModel.coordinator = self
-        detailViewController.viewModel = detailViewModel
-        detailViewController.modalPresentationStyle = .fullScreen
-        navigationController.present(detailViewController, animated: true)
+        print("AddCoordinator Start")
+        let addViewController = AddViewController()
+        let addViewModel = AddViewModel(selectedImage: selectedImage)
+        addViewModel.coordinator = self
+        addViewController.viewModel = addViewModel
+        addViewController.modalPresentationStyle = .fullScreen
+        navigationController.present(addViewController, animated: true)
     }
     
     func didFinish() {
         parentCoordinator?.childDidFinish(self)
     }
     
-    func didFinishDetailScene() {
+    func didFinishAddScene() {
         navigationController.dismiss(animated: true, completion: nil)
     }
+    
+//    deinit {
+//        print("AddCoordinator deinit")
+//    }
 }
