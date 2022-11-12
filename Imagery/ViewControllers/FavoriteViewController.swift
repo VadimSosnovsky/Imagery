@@ -48,11 +48,6 @@ class FavoriteViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        print("FavoriteViewController disappeared ----->")
-    }
-    
-    deinit {
-        print("FavoriteViewController deinit ----->")
     }
 }
 

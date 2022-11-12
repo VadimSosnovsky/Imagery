@@ -43,8 +43,4 @@ final class FavoriteViewModel {
         guard let selectedImage = selectedImage else { return }
         coordinator?.startRemoveScene(withImage: selectedImage)
     }
-    
-    func viewDidDisappear() {
-        coordinator?.didFinish()
-    }
 }

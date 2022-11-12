@@ -40,7 +40,5 @@ final class AuthCoordinator: Coordinator {
         imageryTabBarCoordinator.parentCoordinator = self
         childCoordinators.append(imageryTabBarCoordinator)
         imageryTabBarCoordinator.start()
-        print(childCoordinators)
-        print(childCoordinators.count)
     }
 }

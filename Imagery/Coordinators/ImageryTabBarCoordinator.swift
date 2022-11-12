@@ -21,11 +21,9 @@ final class ImageryTabBarCoordinator: Coordinator {
     }
     
     func start() {
-        print("ImageryTabBarCoordinator Start")
         let pages: [TabBarPage] = [.search, .favorite]
         let controllers: [UINavigationController] = pages.map({ getTabController($0) })
         prepareTabBarController(withTabControllers: controllers)
-        print("ImageryTabBarCoordinator childs is: \(childCoordinators)")
     }
     
     private func prepareTabBarController(withTabControllers tabControllers: [UIViewController]) {
@@ -61,13 +59,7 @@ final class ImageryTabBarCoordinator: Coordinator {
     
     func didFinishImageryTabBar() {
         childCoordinators = []
-        tabBarController.viewControllers?.removeAll()
-//        print("stack is \(tabBarController.viewControllers)")
         parentCoordinator?.childDidFinish(self)
         navigationController.dismiss(animated: true, completion: nil)
-    }
-    
-    deinit {
-        print("ImageryTabBarCoordinator Deinit")
     }
 }

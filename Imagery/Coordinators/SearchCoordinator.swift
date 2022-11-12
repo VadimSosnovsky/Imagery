@@ -19,7 +19,6 @@ final class SearchCoordinator: Coordinator {
     }
     
     func start() {
-        print("SearchCoordinator Start")
         let searchViewController = SearchViewController()
         let searchViewModel = SearchViewModel()
         searchViewModel.coordinator = self
@@ -33,9 +32,5 @@ final class SearchCoordinator: Coordinator {
         addCoordinator.parentCoordinator = self
         childCoordinators.append(addCoordinator)
         addCoordinator.start()
-    }
-
-    deinit {
-        print("SearchCoordinator Deinit")
     }
 }

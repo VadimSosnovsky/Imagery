@@ -34,8 +34,4 @@ final class SignUpCoordinator: Coordinator {
         parentCoordinator?.onUpdateAuthScene()
         navigationController.dismiss(animated: true, completion: nil)
     }
-    
-    deinit {
-        print("SignUpCoordinator deinit")
-    }
 }

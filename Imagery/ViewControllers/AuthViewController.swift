@@ -53,10 +53,6 @@ class AuthViewController: UIViewController {
         emailTextField.text = nil
         passwordTextField.text = nil
     }
-    
-    deinit {
-        print("auth deinit")
-    }
 }
 
 // MARK: - AuthViewModelDelegate

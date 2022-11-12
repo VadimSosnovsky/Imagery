@@ -47,10 +47,6 @@ class SignUpViewController: UIViewController {
         super.viewDidDisappear(animated)
         viewModel.viewDidDisappear()
     }
-    
-    deinit {
-        print("SignUpViewController deinit")
-    }
 }
 
 // MARK: - SignUpViewModelDelegate

@@ -13,6 +13,7 @@ class SearchViewController: UIViewController {
     var collectionViewManager: CollectionViewManager!
     lazy var collectionView = collectionViewManager.collectionView
     let activityIndicator = UIActivityIndicatorView()
+    private let searchLabel = UILabel(font: .helveticaNeueBold20(), textColor: .mainDark())
     var pictureInfo = [Result]()
     var passImage: (UIImage) -> Void = { _ in }
     
@@ -44,19 +45,17 @@ class SearchViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        print("SearchViewController disappeared ----->")
-    }
-    
-    deinit {
-        print("SearchViewController deinit ----->")
+        searchViewController.dismiss(animated: true, completion: nil)
     }
 }
 
 // MARK: - Setup Views
 extension SearchViewController {
     private func setupViews() {
+        searchLabel.text = "Let's search some images"
         view.addSubview(collectionView)
         view.addSubview(activityIndicator)
+        view.addSubview(searchLabel)
     }
     
     private func setupNavigationBar() {
@@ -77,9 +76,12 @@ extension SearchViewController {
             make.trailing.equalToSuperview()
         }
         
-        activityIndicator.snp.makeConstraints { make in
-            make.centerX.equalTo(collectionView.snp.centerX)
-            make.centerY.equalTo(collectionView.snp.centerY)
+        let views = [activityIndicator, searchLabel]
+        for view in views {
+            view.snp.makeConstraints { make in
+                make.centerX.equalTo(collectionView.snp.centerX)
+                make.centerY.equalTo(collectionView.snp.centerY)
+            }
         }
     }
 }
@@ -97,6 +99,7 @@ extension SearchViewController: UISearchBarDelegate {
         viewModel.searchImages(with: searchText) { [weak self] result in
             self?.activityIndicator.startAnimating()
             self?.collectionViewManager.pictureInfo = result
+            self?.searchLabel.isHidden = result.count > 0 ? true : false
         }
     }
 }

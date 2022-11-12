@@ -21,7 +21,6 @@ final class AddCoordinator: Coordinator {
     }
     
     func start() {
-        print("AddCoordinator Start")
         let addViewController = AddViewController()
         let addViewModel = AddViewModel(selectedImage: selectedImage)
         addViewModel.coordinator = self
@@ -37,8 +36,4 @@ final class AddCoordinator: Coordinator {
     func didFinishAddScene() {
         navigationController.dismiss(animated: true, completion: nil)
     }
-    
-//    deinit {
-//        print("AddCoordinator deinit")
-//    }
 }

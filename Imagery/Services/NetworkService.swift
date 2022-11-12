@@ -23,8 +23,6 @@ final class NetworkService: NetworkServiceProtocol {
     private(set) var cache = NSCache<AnyObject, UIImage>()
     
     func fetchImages(searchText: String, completion: @escaping (ImageInfo?) -> Void) {
-        
-        print("config url is: \(Environment.baseURL)")
         let url = Environment.baseURL
         let parameters = [ "query": searchText,
                            "page": "1",

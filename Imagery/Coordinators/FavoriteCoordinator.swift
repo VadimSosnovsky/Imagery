@@ -19,7 +19,6 @@ final class FavoriteCoordinator: Coordinator {
     }
     
     func start() {
-        print("FavoriteCoordinator Start")
         let favoriteViewController = FavoriteViewController()
         let favoriteViewModel = FavoriteViewModel()
         favoriteViewModel.coordinator = self
@@ -37,15 +36,6 @@ final class FavoriteCoordinator: Coordinator {
     
     func logout() {
         parentCoordinator?.didFinishImageryTabBar()
-    }
-    
-    func didFinish() {
-        parentCoordinator?.childDidFinish(self)
-    }
-
-    
-    deinit {
-        print("FavoriteCoordinator Deinit")
     }
 }
 
