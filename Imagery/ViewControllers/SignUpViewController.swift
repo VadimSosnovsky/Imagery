@@ -10,7 +10,7 @@ import SnapKit
 
 class SignUpViewController: UIViewController {
     
-    private let backgroundImageView = UIImageView(image: UIImage(named: "signUpWallpaper"), contentMode: .scaleAspectFill)
+    private let backgroundImageView = UIImageView(image: UIImage(named: "signupWallpaper"), contentMode: .scaleAspectFill)
     private let loginLabel = UILabel(font: .helveticaNeueBold30(), textColor: .mainWhite())
     private let emailTextField = AuthTextField(placeholder: "Email")
     private let emailValidLabel = UILabel(font: .helveticaNeueLight24(), textColor: .mainWhite())
