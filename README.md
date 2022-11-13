@@ -17,8 +17,8 @@ CocoaPods: Firebase, SnapKit, Alamofire, RealmSwift; Верстка интерф
   
 Работа приложения:
 
-Экран запуска 
-<img width="360" alt="Экран запуска" src="Images/Экран запуска.png">
+Экран запуска <img width="360" alt="Экран запуска" src="Images/Экран запуска.png">
+
 
 Начальный экран
 <img width="360" alt="Начальный экран" src="Images/Начальный экран.png">
