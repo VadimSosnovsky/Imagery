@@ -5,7 +5,7 @@
 Используемый стек технологий
 
 Language: Swift;
-Architecture: MVVM-C
+Architecture: MVVM-C;
 CocoaPods: Firebase, SnapKit, Alamofire, RealmSwift; Верстка интерфейса без сториборда через NSLayoutConstraint
 
 Перед запуском проекта необходимо через терминал зайти в директорию проекта и установить там поды командой "pod install"
