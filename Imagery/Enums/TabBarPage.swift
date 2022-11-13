@@ -20,7 +20,6 @@ enum TabBarPage: String {
         }
     }
     
-    
     func pageImageValue() -> UIImage {
         switch self {
         case .search:
