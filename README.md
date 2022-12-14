@@ -2,12 +2,6 @@
 
 Сосновский Вадим, vadim73rus1234567@mail.ru
 
-
-
-![Запись-экрана-2022-12-14-в-16 08 58](https://user-images.githubusercontent.com/71663358/207587678-3d26fd33-cb8d-4fe1-89fb-ec913844256d.gif)
-
-
-
 Используемый стек технологий!
 
 Language: Swift;
