@@ -2,6 +2,12 @@
 
 Сосновский Вадим, vadim73rus1234567@mail.ru
 
+
+
+
+https://user-images.githubusercontent.com/71663358/207587545-5d9c2a59-73b9-43ae-ae04-f86168c2edb4.mov
+
+
 Используемый стек технологий!
 
 Language: Swift;
