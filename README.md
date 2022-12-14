@@ -3,8 +3,6 @@
 Сосновский Вадим, vadim73rus1234567@mail.ru
 
 Используемый стек технологий!
-[Uploading ezgif.com-gif-maker.gif…]()
-
 
 Language: Swift;
 Architecture: MVVM-C;
